@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Happy Dog Bites - Premium Dog Nutrition and Wholesome Health Benefits">
+  <title>Happy Dog Bites - Premium Dog Nutrition</title>
+  
+  <!-- Font: Inter Tight from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+
+  <style>
+    /* DESIGN SYSTEM & VARIABLES */
+    :root {
+      --df-primary: #15803d;      /* Forest Green */
+      --df-primary-hover: #166534;
+      --df-coral: #eb623e;        /* CTA Coral/Orange */
+      --df-coral-hover: #dd522e;
+      --df-dark: #0f172a;         /* Charcoal Text */
+      --df-gray: #475569;         /* Muted Slate */
+      --df-light: #fcfbf7;        /* Warm Off-White */
+      --df-border: #e2e8f0;       /* Border Slate */
+      --df-white: #ffffff;
+      --df-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.04), 0 8px 16px -6px rgba(15, 23, 42, 0.04);
+      --df-radius-md: 12px;
+      --df-radius-lg: 24px;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--df-dark);
+      background-color: var(--df-white);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* GLOBAL TYPOGRAPHY MATCHING FIGMA SPEC */
+    h1, h2, h3 {
+      font-family: 'Inter Tight', sans-serif;
+      font-size: 40px;
+      font-weight: 600; /* SemiBold */
+      line-height: 1.2;  /* 120% */
+      letter-spacing: 0.25px;
+      color: var(--df-dark);
+      margin: 0;
+    }
+
+    p {
+      font-family: 'Inter Tight', sans-serif;
+      font-size: 16px;
+      font-weight: 400; /* Regular */
+      line-height: 1.5;  /* 150% */
+      letter-spacing: 0.5px;
+      color: var(--df-gray);
+      margin: 0;
+    }
+
+    /* SECTION 1: WHAT MAKES US DIFFERENT (SPLIT-PLATE) */
+    .df-different-section {
+      padding: 80px 24px;
+      background-color: var(--df-white);
+      border-bottom: 1px solid var(--df-border);
+    }
+
+    .df-different-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .df-different-heading {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .df-different-grid {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 40px;
+      align-items: center;
+      margin-bottom: 48px;
+    }
+
+    @media (max-width: 991px) {
+      .df-different-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+    }
+
+    /* Features List */
+    .df-features-col {
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+
+    /* Both columns are left-aligned with badge on the left */
+    .df-feature-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    @media (max-width: 991px) {
+      .df-features-col {
+        gap: 28px;
+      }
+    }
+
+    /* Feature Icon Badge - Loaded as image direct from SVG */
+    .df-icon-circle {
+      flex-shrink: 0;
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .df-feature-item:hover .df-icon-circle {
+      transform: scale(1.08) rotate(2deg);
+    }
+
+    /* Text info container - Constrained to exactly 286px width from Figma */
+    .df-feature-info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      width: 286px; /* Fixed Figma Width */
+      box-sizing: border-box;
+    }
+
+    @media (max-width: 480px) {
+      .df-feature-info {
+        width: 100%;
+      }
+    }
+
+    .df-feature-title {
+      font-family: 'Inter Tight', sans-serif;
+      font-size: 19px;          /* Figma: Sub Heading */
+      font-weight: 600;         /* Figma: Semibold */
+      line-height: 1.5;         /* Figma: 150% */
+      letter-spacing: 0.5px;    /* Figma: 0.5px */
+      color: var(--df-dark);
+      margin: 0;
+    }
+
+    /* Split-Plate Circle */
+    .df-plate-col {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .df-plate-wrapper {
+      position: relative;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 16px 36px rgba(15, 23, 42, 0.08);
+      background-color: #f8fafc;
+      border: 4px solid #ffffff;
+    }
+
+    @media (max-width: 480px) {
+      .df-plate-wrapper {
+        width: 260px;
+        height: 260px;
+      }
+    }
+
+    .df-plate-img {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .df-plate-left {
+      left: 0;
+      clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+    }
+
+    .df-plate-right {
+      right: 0;
+      clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+    }
+
+    .df-plate-divider-line {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 2px;
+      background-color: #ffffff;
+      transform: translateX(-50%);
+      z-index: 2;
+    }
+
+    .df-plate-center-badge {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 32px;
+      height: 32px;
+      background-color: #ffffff;
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 3;
+    }
+
+    .df-paw-icon {
+      color: var(--df-primary);
+    }
+
+    /* CTA Section under Split-Plate */
+    .df-cta-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 24px;
+      width: 100%;
+    }
+
+    .df-cta-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 462px;
+      height: 56px;
+      background-color: var(--df-coral);
+      color: #ffffff;
+      font-family: 'Inter Tight', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      border-radius: 24px; /* pill shape */
+      text-decoration: none;
+      text-align: center;
+      box-sizing: border-box;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 12px rgba(235, 98, 62, 0.2);
+    }
+
+    .df-cta-btn:hover {
+      background-color: var(--df-coral-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 16px rgba(235, 98, 62, 0.25);
+    }
+
+    /* Trust Row below CTA button (Exactly 462px wide with 16px gap) */
+    .df-trust-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 462px;
+      margin-top: 16px; /* Exactly 16px gap */
+      box-sizing: border-box;
+      padding: 0 4px;
+    }
+
+    @media (max-width: 500px) {
+      .df-cta-btn {
+        width: 100%;
+        max-width: 462px;
+      }
+      .df-trust-row {
+        width: 100%;
+        max-width: 462px;
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+      }
+    }
+
+    .df-guarantee-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #475569;
+    }
+
+    .df-shield-icon {
+      color: #475569;
+      flex-shrink: 0;
+    }
+
+    .df-trust-text {
+      font-family: 'Inter Tight', sans-serif;
+      font-size: 13.5px;
+      font-weight: 500;
+      color: #475569;
+      text-transform: none;
+    }
+
+    .df-payment-logos {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .df-payment-logos img {
+      height: 18px;
+      width: auto;
+      object-fit: contain;
+      transition: transform 0.2s ease;
+    }
+
+    .df-payment-logos img:hover {
+      transform: scale(1.05);
+    }
+
+
+    /* SECTION 2: NUTRITION STATS (TWO-COLUMN) */
+    .df-stats-section {
+      padding: 80px 24px;
+      background-color: var(--df-light); /* Warm light background */
+      border-bottom: 1px solid var(--df-border);
+    }
+
+    .df-stats-inner {
+      max-width: 1200px; /* Increased max-width to host 570px + 60px + 570px */
+      margin: 0 auto;
+    }
+
+    .df-stats-grid {
+      display: grid;
+      grid-template-columns: 570px 570px; /* Two equal 570px columns from Figma */
+      gap: 60px; /* Column Gap */
+      justify-content: center;
+      align-items: center;
+    }
+
+    @media (max-width: 1220px) {
+      .df-stats-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 991px) {
+      .df-stats-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    /* Left Stats Column: Styled exactly like Figma Frame 1171276409 */
+    .df-stats-info-col {
+      display: flex;
+      flex-direction: column;
+      gap: 48px; /* Figma Auto Layout vertical gap */
+      width: 570px; /* Fixed Figma Width */
+      padding-right: 32px; /* Figma Right Padding */
+      box-sizing: border-box;
+    }
+
+    @media (max-width: 1220px) {
+      .df-stats-info-col {
+        width: 100%;
+        padding-right: 0;
+      }
+    }
+
+    /* Sub-Group 1: Heading and Description */
+    .df-stats-header-group {
+      display: flex;
+      flex-direction: column;
+      gap: 16px; /* Gap between header & text */
+    }
+
+    .df-stats-heading {
+      margin: 0;
+    }
+
+    .df-stats-description {
+      margin: 0;
+    }
+
+    /* Sub-Group 2: Key Points and List */
+    .df-stats-key-points-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .df-stats-key-points-title {
+      font-family: 'Inter Tight', sans-serif;
+      font-size: 19px;          /* Figma: Sub Heading */
+      font-weight: 600;         /* Figma: SemiBold */
+      line-height: 1.5;         /* Figma: 150% */
+      letter-spacing: 0.5px;    /* Figma: 0.5px */
+      text-transform: none;     /* Not uppercase in Figma */
+      color: var(--df-dark);
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .df-stats-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Stats Row Item with Divider border spanning full width */
+    .df-stat-row-item {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--df-border); /* Spans entire width of row */
+    }
+
+    .df-stat-percent {
+      font-family: 'Inter Tight', sans-serif;
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--df-coral);
+      flex-shrink: 0;
+      min-width: 80px;
+      letter-spacing: -1px;
+      line-height: 1;
+    }
+
+    .df-stat-row-desc {
+      margin: 0;
+    }
+
+    /* CTA Button Box spanning 100% width of the 570px container */
+    .df-stats-action-box {
+      width: 100%;
+    }
+
+    .df-stats-callout-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%; /* Stretches across the column inner content width: 538px */
+      height: auto; /* Hug content */
+      padding: 12px 40px; /* Figma: Top 12, Right 40, Bottom 12, Left 40 */
+      background-color: #EE6F4B; /* Figma exact color */
+      color: #ffffff;
+      font-family: 'Inter Tight', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      border-radius: 6px; /* Figma: 6px radius */
+      text-decoration: none;
+      box-sizing: border-box;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: none;
+    }
+
+    .df-stats-callout-btn:hover {
+      background-color: #e0603d;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(238, 111, 75, 0.25);
+    }
+
+    /* Image Column: 570px by 570px Square with 10px border radius */
+    .df-stats-img-col {
+      display: flex;
+      justify-content: center;
+    }
+
+    .df-stats-img-wrapper {
+      width: 570px; /* Fixed Figma width */
+      height: 570px; /* Fixed Figma height (Square) */
+      border-radius: 10px; /* Exact Figma inspect radius */
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.05);
+      border: 1px solid var(--df-border);
+    }
+
+    @media (max-width: 1220px) {
+      .df-stats-img-wrapper {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1 / 1; /* keep square dynamically */
+      }
+    }
+
+    .df-stats-dog-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: transform 0.5s ease;
+    }
+
+    .df-stats-dog-image:hover {
+      transform: scale(1.02);
+    }
+
+
+    /* SECTION 3 & 4: HEALTH BENEFITS GRID (ALTERNATING) */
+    .df-benefits-section {
+      padding: 80px 24px;
+      background-color: var(--df-white);
+    }
+
+    .df-benefits-inner {
+      max-width: 1200px; /* Match stats section width */
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 96px; /* row margins */
+    }
+
+    @media (max-width: 768px) {
+      .df-benefits-inner {
+        gap: 56px;
+      }
+    }
+
+    /* Alternating Row Grids: two 570px columns with 60px gap */
+    .df-benefit-row {
+      display: grid;
+      grid-template-columns: 570px 570px; /* Two equal 570px columns from Figma */
+      align-items: center;
+      gap: 60px;
+      justify-content: center;
+    }
+
+    .df-benefit-row-reverse {
+      display: grid;
+      grid-template-columns: 570px 570px; /* Two equal 570px columns from Figma */
+      align-items: center;
+      gap: 60px;
+      justify-content: center;
+    }
+
+    .df-benefit-row-reverse .df-benefit-media-col {
+      grid-column: 2;
+    }
+
+    .df-benefit-row-reverse .df-benefit-text-col {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    @media (max-width: 768px) {
+      .df-benefit-row,
+      .df-benefit-row-reverse {
+        grid-template-columns: 1fr;
+      }
+      .df-benefit-row-reverse .df-benefit-media-col {
+        grid-column: auto;
+      }
+      .df-benefit-row-reverse .df-benefit-text-col {
+        grid-column: auto;
+        grid-row: auto;
+      }
+    }
+
+    .df-media-box {
+      position: relative;
+      width: 570px; /* Fixed Figma width */
+      height: 480px; /* Fixed Figma height */
+      border-radius: 10px; /* Figma: 10px radius */
+      overflow: hidden;
+      background-color: var(--df-light);
+      border: 1px solid var(--df-border);
+      box-shadow: 0 16px 36px rgba(15, 23, 42, 0.04);
+      cursor: pointer;
+      box-sizing: border-box;
+    }
+
+    .df-card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .df-media-box:hover .df-card-img {
+      transform: scale(1.03);
+    }
+
+    /* Text Column layout styled exactly like Figma Frame 1171276346 */
+    .df-benefit-text-col {
+      display: flex;
+      flex-direction: column;
+      gap: 16px; /* Gap: 16px between heading and paragraph */
+      width: 570px; /* Fixed Figma Width */
+      padding-right: 32px; /* Figma Right Padding */
+      box-sizing: border-box;
+    }
+
+    /* Row 1 Text (Right Side): padding already set on parent */
+    .df-benefit-row .df-benefit-text-col {
+      padding-left: 0;
+      padding-right: 32px;
+    }
+
+    /* Row 2 Text (Left Side): padding already set on parent */
+    .df-benefit-row-reverse .df-benefit-text-col {
+      padding-right: 32px;
+      padding-left: 0;
+    }
+
+    @media (max-width: 768px) {
+      .df-benefit-text-col {
+        width: 100%;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
+    }
+
+    /* Typography Responsive adjustments for mobile headers */
+    @media (max-width: 768px) {
+      h1, h2, h3, .df-different-heading, .df-stats-heading, .df-benefit-title {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SECTION 1: WHAT MAKES US DIFFERENT (SPLIT-PLATE) -->
+  <section class="df-different-section">
+    <div class="df-different-inner">
+      <h2 class="df-different-heading">What makes us different<br>makes them stronger</h2>
+
+      <div class="df-different-grid">
+        <!-- Left Features Column -->
+        <div class="df-features-col df-features-left">
+          <div class="df-feature-item">
+            <img class="df-icon-circle" src="./assets/food%201.svg" alt="Real Food Icon">
+            <div class="df-feature-info">
+              <h3 class="df-feature-title">Real Food</h3>
+              <p class="df-feature-desc">Wholesome recipes for dogs with real meat and veggies.</p>
+            </div>
+          </div>
+
+          <div class="df-feature-item">
+            <img class="df-icon-circle" src="./assets/pet-bowl%201.svg" alt="Premium Ingredient Icon">
+            <div class="df-feature-info">
+              <h3 class="df-feature-title">Premium Ingredient</h3>
+              <p class="df-feature-desc">Elevating pet care with unmatched safety and quality.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Center Split-Plate Column -->
+        <div class="df-plate-col">
+          <div class="df-plate-wrapper">
+            <!-- Left raw plate -->
+            <img class="df-plate-img df-plate-left" src="./assets/meat_bowl.png" alt="Raw food plate">
+            <!-- Right kibble plate -->
+            <img class="df-plate-img df-plate-right" src="./assets/dog_food_bowl.png" alt="Kibble plate">
+            
+            <!-- Central split line -->
+            <div class="df-plate-divider-line"></div>
+
+            <!-- Central paw badge -->
+            <div class="df-plate-center-badge">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" class="df-paw-icon">
+                <path d="M12 14c-1.66 0-3 1.34-3 3 0 2 2 3.5 3 4 1-.5 3-2 3-4 0-1.66-1.34-3-3-3zm-4.5-3c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5-.67-1.5-1.5-1.5zm9 0c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5-.67-1.5-1.5-1.5zm-6.5-3c-.83 0-1.5.67-1.5 1.5S9.17 11 10 11s1.5-.67 1.5-1.5S10.83 8 10 8zm4 0c-.83 0-1.5.67-1.5 1.5S13.17 11 14 11s1.5-.67 1.5-1.5S14.83 8 14 8z"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Features Column -->
+        <div class="df-features-col df-features-right">
+          <div class="df-feature-item">
+            <img class="df-icon-circle" src="./assets/pet-food%201.svg" alt="Made Fresh Icon">
+            <div class="df-feature-info">
+              <h3 class="df-feature-title">Made Fresh</h3>
+              <p class="df-feature-desc">We prioritize maintaining the integrity of whole foods and nutrition.</p>
+            </div>
+          </div>
+
+          <div class="df-feature-item">
+            <img class="df-icon-circle" src="./assets/vet%201.svg" alt="Vet Developed Icon">
+            <div class="df-feature-info">
+              <h3 class="df-feature-title">Vet Developed</h3>
+              <p class="df-feature-desc">We raise the bar for dog nutrition, surpassing industry expectations.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action CTA Box -->
+      <div class="df-cta-box">
+        <a href="#" class="df-cta-btn">Get your dog's healthy meal today!</a>
+        
+        <!-- Trust Row: Guarantee Badge & Payments Inline -->
+        <div class="df-trust-row">
+          <div class="df-guarantee-badge">
+            <svg class="df-shield-icon" viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2.5" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 11 11 13 15 9"/></svg>
+            <span class="df-trust-text">30-day money back guarantee</span>
+          </div>
+
+          <div class="df-payment-logos">
+            <img src="./assets/paypal_icon.png" alt="Paypal">
+            <img src="./assets/visa_icon.png" alt="Visa">
+            <img src="./assets/mastercard_icon.png" alt="Mastercard">
+            <img src="./assets/apple_pay_icon.png" alt="Apple Pay">
+            <img src="./assets/gpay_icon.png" alt="GPay">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SECTION 2: NUTRITION STATS (TWO-COLUMN) -->
+  <section class="df-stats-section">
+    <div class="df-stats-inner">
+      <div class="df-stats-grid">
+        
+        <!-- Info Stats column -->
+        <div class="df-stats-info-col">
+          <!-- Header and Description Block -->
+          <div class="df-stats-header-group">
+            <h2 class="df-stats-heading">Nutrition is the foundation for longer, healthier lives in dogs.</h2>
+            <p class="df-stats-description">Invest in your dog's future with our scientifically formulated superfood-powered supplements. Give them the nutrition they deserve and watch them thrive with vitality, energy, and the joy of a longer, healthier life.</p>
+          </div>
+          
+          <!-- Key Points and Stats List -->
+          <div class="df-stats-key-points-group">
+            <span class="df-stats-key-points-title">Key Points:</span>
+            <div class="df-stats-list">
+              <!-- Stat 1 -->
+              <div class="df-stat-row-item">
+                <span class="df-stat-percent">97%</span>
+                <p class="df-stat-row-desc">Dogs choose our dog food over leading brands because of its real functional ingredients and delicious flavor.</p>
+              </div>
+              <!-- Stat 2 -->
+              <div class="df-stat-row-item">
+                <span class="df-stat-percent">84%</span>
+                <p class="df-stat-row-desc">Our dog food provides superior nutrition and a patented probiotic for optimal nutrient absorption.</p>
+              </div>
+              <!-- Stat 3 -->
+              <div class="df-stat-row-item">
+                <span class="df-stat-percent">92%</span>
+                <p class="df-stat-row-desc">Our dog food's high protein and fat digestibility contribute to ideal stool quality.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Button Box (Width 100%) -->
+          <div class="df-stats-action-box">
+            <a href="#" class="df-stats-callout-btn">Give your furry friend the gift of wholesome nutrition</a>
+          </div>
+        </div>
+
+        <!-- Image column: 570px by 570px perfect square from Figma -->
+        <div class="df-stats-img-col">
+          <div class="df-stats-img-wrapper">
+            <img class="df-stats-dog-image" src="./assets/pic_of_dog_and_product.png" alt="Happy dog next to product bag">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SECTION 3 & 4: HEALTH BENEFITS GRID (ALTERNATING) -->
+  <section class="df-benefits-section">
+    <div class="df-benefits-inner">
+      
+      <!-- ROW 1: Gastrointestinal Health (Media Left, Text Right) -->
+      <div class="df-benefit-row">
+        <div class="df-benefit-media-col">
+          <div class="df-media-box">
+            <!-- GIF plays natively without any play overlay -->
+            <img class="df-card-img" src="./assets/dog_eating_gif.gif" alt="Two dogs eating meals">
+          </div>
+        </div>
+
+        <div class="df-benefit-text-col">
+          <h3 class="df-benefit-title">Improve overall gastrointestinal health for better nutrient absorption</h3>
+          <p class="df-benefit-desc">Through rigorous scientific studies and consultations with veterinarians, we have created a breakthrough formula exclusively tailored to combat the health challenges prevalent in dogs. A staggering 91% of our customers have reported significant improvements in their dogs' health after incorporating our product into their diet.</p>
+        </div>
+      </div>
+
+      <!-- ROW 2: Prebiotics (Text Left, Image Right) -->
+      <div class="df-benefit-row df-benefit-row-reverse">
+        <div class="df-benefit-media-col">
+          <div class="df-media-box">
+            <img class="df-card-img" src="./assets/dog_food.jpg" alt="Dog food kibble close-up">
+          </div>
+        </div>
+
+        <div class="df-benefit-text-col">
+          <h3 class="df-benefit-title">Prebiotics nourish the beneficial gut bacteria, supporting digestive health</h3>
+          <p class="df-benefit-desc">Our dog food formula contains carefully selected prebiotics that work in harmony with the gut microbiota, providing the necessary nutrients for the growth and maintenance of beneficial bacteria, ultimately supporting digestive health.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</body>
+</html>

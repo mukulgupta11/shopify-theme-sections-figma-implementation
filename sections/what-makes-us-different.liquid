@@ -1,0 +1,511 @@
+{%- comment -%}
+  Shopify Section: What Makes Us Different (Split-Plate Features & CTA)
+  File: sections/what-makes-us-different.liquid
+  Description: Custom section featuring a CSS split-plate in the center, 4 circular icon features around it, and a trust banner CTA at the bottom.
+{%- endcomment -%}
+
+<!-- Link Inter Tight from Google Fonts if not already linked in the theme layout -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+
+<div class="df-different-container" id="DfDifferent-{{ section.id }}">
+  <div class="df-different-inner">
+    
+    <!-- Section Heading (Figma: Heading 3 / Semibold, 40px, 120%, 0.25px letter spacing) -->
+    <h2 class="df-different-heading">
+      {{ section.settings.heading | default: "What makes us different makes them stronger" }}
+    </h2>
+
+    <!-- Main Grid containing Left Info, Center Plate, Right Info -->
+    <div class="df-different-grid">
+      
+      <!-- Left Column: Real Food & Premium Ingredient -->
+      <div class="df-features-col df-features-left">
+        <!-- Feature 1: Real Food -->
+        <div class="df-feature-item">
+          <img class="df-icon-circle" src="{{ 'food 1.svg' | asset_url | default: './assets/food 1.svg' }}" alt="Real Food Icon">
+          <div class="df-feature-info">
+            <h3 class="df-feature-title">{{ section.settings.f1_title | default: "Real Food" }}</h3>
+            <p class="df-feature-desc">{{ section.settings.f1_desc | default: "Wholesome recipes for dogs with real meat and veggies." }}</p>
+          </div>
+        </div>
+
+        <!-- Feature 2: Premium Ingredient -->
+        <div class="df-feature-item">
+          <img class="df-icon-circle" src="{{ 'pet-bowl 1.svg' | asset_url | default: './assets/pet-bowl 1.svg' }}" alt="Premium Ingredient Icon">
+          <div class="df-feature-info">
+            <h3 class="df-feature-title">{{ section.settings.f2_title | default: "Premium Ingredient" }}</h3>
+            <p class="df-feature-desc">{{ section.settings.f2_desc | default: "Elevating pet care with unmatched safety and quality." }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Center Column: Circular Split-Plate -->
+      <div class="df-plate-col">
+        <div class="df-plate-wrapper">
+          <!-- Left Half: Fresh Raw Meat Image -->
+          <img class="df-plate-img df-plate-left" src="{{ section.settings.raw_img | default: './assets/meat_bowl.png' }}" alt="Fresh Raw Food Plate">
+          <!-- Right Half: Dry Kibble Image -->
+          <img class="df-plate-img df-plate-right" src="{{ section.settings.kibble_img | default: './assets/dog_food_bowl.png' }}" alt="Dry Kibble Plate">
+          
+          <!-- Central divider line -->
+          <div class="df-plate-divider-line"></div>
+
+          <!-- Central Badge -->
+          <div class="df-plate-center-badge">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" class="df-paw-icon">
+              <path d="M12 14c-1.66 0-3 1.34-3 3 0 2 2 3.5 3 4 1-.5 3-2 3-4 0-1.66-1.34-3-3-3zm-4.5-3c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5-.67-1.5-1.5-1.5zm9 0c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5-.67-1.5-1.5-1.5zm-6.5-3c-.83 0-1.5.67-1.5 1.5S9.17 11 10 11s1.5-.67 1.5-1.5S10.83 8 10 8zm4 0c-.83 0-1.5.67-1.5 1.5S13.17 11 14 11s1.5-.67 1.5-1.5S14.83 8 14 8z"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Made Fresh & Vet Developed -->
+      <div class="df-features-col df-features-right">
+        <!-- Feature 3: Made Fresh -->
+        <div class="df-feature-item">
+          <img class="df-icon-circle" src="{{ 'pet-food 1.svg' | asset_url | default: './assets/pet-food 1.svg' }}" alt="Made Fresh Icon">
+          <div class="df-feature-info">
+            <h3 class="df-feature-title">{{ section.settings.f3_title | default: "Made Fresh" }}</h3>
+            <p class="df-feature-desc">{{ section.settings.f3_desc | default: "We prioritize maintaining the integrity of whole foods and nutrition." }}</p>
+          </div>
+        </div>
+
+        <!-- Feature 4: Vet Developed -->
+        <div class="df-feature-item">
+          <img class="df-icon-circle" src="{{ 'vet 1.svg' | asset_url | default: './assets/vet 1.svg' }}" alt="Vet Developed Icon">
+          <div class="df-feature-info">
+            <h3 class="df-feature-title">{{ section.settings.f4_title | default: "Vet Developed" }}</h3>
+            <p class="df-feature-desc">{{ section.settings.f4_desc | default: "We raise the bar for dog nutrition, surpassing industry expectations." }}</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Action & Trust Section -->
+    <div class="df-cta-box">
+      <a href="{{ section.settings.cta_link | default: '#' }}" class="df-cta-btn">
+        {{ section.settings.cta_text | default: "Get your dog's healthy meal today!" }}
+      </a>
+      
+      <!-- Guarantee Badge and Payment Logos Row -->
+      <div class="df-trust-row">
+        <div class="df-guarantee-badge">
+          <svg class="df-shield-icon" viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2.5" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 11 11 13 15 9"/></svg>
+          <span class="df-trust-text">{{ section.settings.guarantee_text | default: "30-day money back guarantee" }}</span>
+        </div>
+        
+        <div class="df-payment-logos">
+          <img src="./assets/paypal_icon.png" alt="Paypal">
+          <img src="./assets/visa_icon.png" alt="Visa">
+          <img src="./assets/mastercard_icon.png" alt="Mastercard">
+          <img src="./assets/apple_pay_icon.png" alt="Apple Pay">
+          <img src="./assets/gpay_icon.png" alt="GPay">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<style>
+  :root {
+    --df-primary: #15803d;
+    --df-primary-hover: #166534;
+    --df-coral: #eb623e;
+    --df-coral-hover: #dd522e;
+    --df-dark: #0f172a;
+    --df-gray: #475569;
+    --df-border: #e2e8f0;
+    --df-radius-md: 12px;
+    --df-radius-lg: 24px;
+  }
+
+  .df-different-container {
+    padding: 72px 24px;
+    background-color: #ffffff;
+    font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
+  .df-different-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .df-different-heading {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 40px;          /* Figma Heading 3 */
+    font-weight: 600;         /* Figma Semibold */
+    color: var(--df-dark);
+    text-align: center;
+    margin: 0 0 56px 0;
+    letter-spacing: 0.25px;   /* Figma: 0.25px */
+    line-height: 1.2;         /* Figma: 120% */
+  }
+
+  .df-different-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 48px;
+  }
+
+  @media (max-width: 991px) {
+    .df-different-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .df-different-heading {
+      font-size: 30px;
+    }
+  }
+
+  /* Features Column Layout */
+  .df-features-col {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  /* Both columns are left-aligned with badge on the left */
+  .df-feature-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  @media (max-width: 991px) {
+    .df-features-col {
+      gap: 24px;
+    }
+  }
+
+  /* Feature Icon Badge - Resized to exactly 60px x 60px */
+  .df-icon-circle {
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .df-feature-item:hover .df-icon-circle {
+    transform: scale(1.08) rotate(2deg);
+  }
+
+  /* Text info container - Constrained to exactly 286px width from Figma */
+  .df-feature-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 286px; /* Fixed Figma Width */
+    box-sizing: border-box;
+  }
+
+  @media (max-width: 480px) {
+    .df-feature-info {
+      width: 100%;
+    }
+  }
+
+  .df-feature-title {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 19px;          /* Figma: Sub Heading */
+    font-weight: 600;         /* Figma: Semibold */
+    line-height: 1.5;         /* Figma: 150% */
+    letter-spacing: 0.5px;    /* Figma: 0.5px */
+    color: var(--df-dark);
+    margin: 0;
+  }
+
+  .df-feature-desc {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 16px;          /* Figma: Paragraph */
+    font-weight: 400;         /* Figma: Regular */
+    line-height: 1.5;         /* Figma: 150% */
+    letter-spacing: 0.5px;    /* Figma: 0.5px */
+    color: var(--df-gray);
+    margin: 0;
+  }
+
+  /* Split-Plate Styles */
+  .df-plate-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .df-plate-wrapper {
+    position: relative;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 16px 36px rgba(15, 23, 42, 0.08);
+    background-color: #f8fafc;
+    border: 4px solid #ffffff;
+  }
+
+  @media (max-width: 480px) {
+    .df-plate-wrapper {
+      width: 260px;
+      height: 260px;
+    }
+  }
+
+  .df-plate-img {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .df-plate-left {
+    left: 0;
+    clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+  }
+
+  .df-plate-right {
+    right: 0;
+    clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+  }
+
+  .df-plate-divider-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background-color: #ffffff;
+    transform: translateX(-50%);
+    z-index: 2;
+  }
+
+  .df-plate-center-badge {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 32px;
+    height: 32px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+  }
+
+  .df-paw-icon {
+    color: var(--df-primary);
+  }
+
+  /* Bottom CTA Banner Styles (Pixel-Perfect from Figma) */
+  .df-cta-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 24px;
+    width: 100%;
+  }
+
+  .df-cta-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 462px;
+    height: 56px;
+    background-color: var(--df-coral);
+    color: #ffffff;
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    border-radius: 24px; /* pill shape */
+    text-decoration: none;
+    text-align: center;
+    box-sizing: border-box;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 12px rgba(235, 98, 62, 0.2);
+  }
+
+  .df-cta-btn:hover {
+    background-color: var(--df-coral-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(235, 98, 62, 0.3);
+  }
+
+  /* Trust row horizontal alignments (Exactly 462px wide with 16px gap) */
+  .df-trust-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 462px;
+    margin-top: 16px; /* Exactly 16px gap */
+    box-sizing: border-box;
+    padding: 0 4px;
+  }
+
+  @media (max-width: 500px) {
+    .df-cta-btn {
+      width: 100%;
+      max-width: 462px;
+    }
+    .df-trust-row {
+      width: 100%;
+      max-width: 462px;
+      flex-direction: column;
+      gap: 12px;
+      text-align: center;
+    }
+  }
+
+  .df-guarantee-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--df-gray);
+  }
+
+  .df-shield-icon {
+    color: var(--df-gray);
+    flex-shrink: 0;
+  }
+
+  .df-trust-text {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--df-gray);
+    text-transform: none; /* Lowercase casing matching figma */
+  }
+
+  .df-payment-logos {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .df-payment-logos img {
+    height: 18px;
+    width: auto;
+    object-fit: contain;
+    transition: opacity 0.2s ease;
+  }
+
+  .df-payment-logos img:hover {
+    opacity: 1;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "What Makes Us Different",
+  "tag": "section",
+  "class": "section-df-different",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "What makes us different makes them stronger"
+    },
+    {
+      "type": "header",
+      "content": "Image Assets"
+    },
+    {
+      "type": "image_picker",
+      "id": "raw_img",
+      "label": "Raw Food Plate (Left Half)"
+    },
+    {
+      "type": "image_picker",
+      "id": "kibble_img",
+      "label": "Dry Kibble Plate (Right Half)"
+    },
+    {
+      "type": "header",
+      "content": "Features Config"
+    },
+    {
+      "type": "text",
+      "id": "f1_title",
+      "label": "Feature 1 Title",
+      "default": "Real Food"
+    },
+    {
+      "type": "textarea",
+      "id": "f1_desc",
+      "label": "Feature 1 Description",
+      "default": "Wholesome recipes for dogs with real meat and veggies."
+    },
+    {
+      "type": "text",
+      "id": "f2_title",
+      "label": "Feature 2 Title",
+      "default": "Premium Ingredient"
+    },
+    {
+      "type": "textarea",
+      "id": "f2_desc",
+      "label": "Feature 2 Description",
+      "default": "Elevating pet care with unmatched safety and quality."
+    },
+    {
+      "type": "text",
+      "id": "f3_title",
+      "label": "Feature 3 Title",
+      "default": "Made Fresh"
+    },
+    {
+      "type": "textarea",
+      "id": "f3_desc",
+      "label": "Feature 3 Description",
+      "default": "We prioritize maintaining the integrity of whole foods and nutrition."
+    },
+    {
+      "type": "text",
+      "id": "f4_title",
+      "label": "Feature 4 Title",
+      "default": "Vet Developed"
+    },
+    {
+      "type": "textarea",
+      "id": "f4_desc",
+      "label": "Feature 4 Description",
+      "default": "We raise the bar for dog nutrition, surpassing industry expectations."
+    },
+    {
+      "type": "header",
+      "content": "CTA & Guarantee"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Button Text",
+      "default": "Get your dog's healthy meal today!"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA Button Link"
+    },
+    {
+      "type": "text",
+      "id": "guarantee_text",
+      "label": "Guarantee Text",
+      "default": "30-day money back guarantee"
+    }
+  ],
+  "presets": [
+    {
+      "name": "What Makes Us Different"
+    }
+  ]
+}
+{% endschema %}

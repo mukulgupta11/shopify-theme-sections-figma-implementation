@@ -1,0 +1,338 @@
+{%- comment -%}
+  Shopify Section: Dog Food Nutrition Stats (Two-Column Stats & Dog Image)
+  File: sections/nutrition-stats.liquid
+  Description: Two-column section showing key percentages, scientific copy, and high-fidelity dog image.
+{%- endcomment -%}
+
+<!-- Link Inter Tight from Google Fonts if not already linked in the theme layout -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+
+<div class="df-stats-container" id="DfStats-{{ section.id }}">
+  <div class="df-stats-inner">
+    
+    <div class="df-stats-grid">
+      
+      <!-- LEFT COLUMN: Heading & Percentage List (Figma Frame 1171276409 layout) -->
+      <div class="df-stats-info-col">
+        
+        <!-- Sub-group 1: Heading and Description -->
+        <div class="df-stats-header-group">
+          <h2 class="df-stats-heading">
+            {{ section.settings.heading | default: "Nutrition is the foundation for longer, healthier lives in dogs." }}
+          </h2>
+          <p class="df-stats-description">
+            {{ section.settings.description | default: "Invest in your dog's future with our scientifically formulated superfood-powered supplements. Give them the nutrition they deserve and watch them thrive with vitality, energy, and the joy of a longer, healthier life." }}
+          </p>
+        </div>
+
+        <!-- Sub-group 2: Key Points and List -->
+        <div class="df-stats-key-points-group">
+          <span class="df-stats-key-points-title">Key Points:</span>
+
+          <div class="df-stats-list">
+            {%- for block in section.blocks -%}
+              <!-- Stat Row Item with full-width border divider -->
+              <div class="df-stat-row-item" {{ block.shopify_attributes }}>
+                <span class="df-stat-percent">{{ block.settings.value }}</span>
+                <p class="df-stat-row-desc">{{ block.settings.label }}</p>
+              </div>
+            {%- endfor -%}
+          </div>
+        </div>
+
+        <!-- Sub-group 3: Orange CTA Button below (Width: 100%) -->
+        {%- if section.settings.callout_text != blank -%}
+          <div class="df-stats-action-box">
+            <a href="{{ section.settings.callout_link | default: '#' }}" class="df-stats-callout-btn">
+              {{ section.settings.callout_text }}
+            </a>
+          </div>
+        {%- endif -%}
+      </div>
+
+      <!-- RIGHT COLUMN: High-Fidelity Image -->
+      <div class="df-stats-img-col">
+        <div class="df-stats-img-wrapper">
+          {%- if section.settings.image != blank -%}
+            <img class="df-stats-dog-image" src="{{ section.settings.image | image_url: width: 1200 }}" alt="Happy dog next to product bag" loading="lazy">
+          {%- else -%}
+            <img class="df-stats-dog-image" src="./assets/pic_of_dog_and_product.png" alt="Happy dog next to product bag" loading="lazy">
+          {%- endif -%}
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<style>
+  .df-stats-container {
+    padding: 72px 24px;
+    background-color: #ffffff;
+    font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
+  .df-stats-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .df-stats-grid {
+    display: grid;
+    grid-template-columns: 570px 570px; /* Two equal 570px columns from Figma */
+    gap: 60px; /* Figma column spacing */
+    justify-content: center;
+    align-items: center;
+  }
+
+  @media (max-width: 991px) {
+    .df-stats-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+
+  /* Left Stats Column: matches Figma Frame 1171276409 layout */
+  .df-stats-info-col {
+    display: flex;
+    flex-direction: column;
+    gap: 48px; /* Figma Auto Layout vertical gap */
+    width: 570px; /* Fixed Figma Width */
+    padding-right: 32px; /* Figma Right Padding */
+    box-sizing: border-box;
+  }
+
+  @media (max-width: 991px) {
+    .df-stats-info-col {
+      width: 100%;
+      padding-right: 0;
+    }
+  }
+
+  /* Heading & Description block */
+  .df-stats-header-group {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .df-stats-heading {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 40px;          /* Figma Heading 3 */
+    font-weight: 600;         /* Figma Semibold */
+    color: var(--df-dark);
+    margin: 0;
+    letter-spacing: 0.25px;   /* Figma 0.25px */
+    line-height: 1.2;         /* Figma 120% */
+  }
+
+  @media (max-width: 768px) {
+    .df-stats-heading {
+      font-size: 30px;
+    }
+  }
+
+  .df-stats-description {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 16px;          /* Figma Paragraph */
+    font-weight: 400;         /* Figma Regular */
+    color: var(--df-gray);
+    line-height: 1.5;         /* Figma 150% */
+    letter-spacing: 0.5px;    /* Figma 0.5px */
+    margin: 0;
+  }
+
+  /* Key Points list group */
+  .df-stats-key-points-title {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 19px;          /* Figma: Sub Heading */
+    font-weight: 600;         /* Figma: SemiBold */
+    line-height: 1.5;         /* Figma: 150% */
+    letter-spacing: 0.5px;    /* Figma: 0.5px */
+    text-transform: none;     /* Not uppercase in Figma */
+    color: var(--df-dark);
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .df-stats-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Stats Row Item with Divider border spanning full width */
+  .df-stat-row-item {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--df-border); /* Spans entire width of row */
+  }
+
+  .df-stat-percent {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--df-coral);
+    flex-shrink: 0;
+    min-width: 80px;
+    letter-spacing: -1px;
+    line-height: 1;
+  }
+
+  .df-stat-row-desc {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 16px;          /* Figma Paragraph */
+    font-weight: 400;         /* Figma Regular */
+    line-height: 1.5;         /* Figma 150% */
+    letter-spacing: 0.5px;    /* Figma 0.5px */
+    color: var(--df-gray);
+    margin: 0;
+  }
+
+  /* CTA Button Box spanning 100% width of the 570px container */
+  .df-stats-action-box {
+    width: 100%;
+  }
+
+  .df-stats-callout-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%; /* Stretches across the column */
+    height: auto; /* Hug content */
+    padding: 12px 40px; /* Figma: Top 12, Right 40, Bottom 12, Left 40 */
+    background-color: #EE6F4B; /* Figma exact color */
+    color: #ffffff;
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    border-radius: 6px; /* Figma: 6px radius */
+    text-decoration: none;
+    box-sizing: border-box;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: none;
+  }
+
+  .df-stats-callout-btn:hover {
+    background-color: #e0603d;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(238, 111, 75, 0.25);
+  }
+
+  /* Right column Image wrapper */
+  .df-stats-img-col {
+    display: flex;
+    justify-content: center;
+  }
+
+  .df-stats-img-wrapper {
+    width: 570px; /* Fixed Figma width */
+    height: 570px; /* Fixed Figma height (Square) */
+    border-radius: 10px; /* Exact Figma inspect radius */
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06);
+    border: 1px solid var(--df-border);
+  }
+
+  .df-stats-dog-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .df-stats-dog-image:hover {
+    transform: scale(1.03);
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Dog Food Nutrition Stats",
+  "tag": "section",
+  "class": "section-df-stats",
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "Nutrition is the foundation for longer, healthier lives in dogs."
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Section Description",
+      "default": "Invest in your dog's future with our scientifically formulated superfood-powered supplements. Give them the nutrition they deserve and watch them thrive with vitality, energy, and the joy of a longer, healthier life."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Main Image"
+    },
+    {
+      "type": "text",
+      "id": "callout_text",
+      "label": "CTA Button Text",
+      "default": "Give your furry friend the gift of wholesome nutrition"
+    },
+    {
+      "type": "url",
+      "id": "callout_link",
+      "label": "CTA Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat Highlight",
+      "settings": [
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Stat Value (e.g. 97%)",
+          "default": "97%"
+        },
+        {
+          "type": "textarea",
+          "id": "label",
+          "label": "Stat Description",
+          "default": "Dogs choose our dog food over leading brands..."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Dog Food Nutrition Stats",
+      "blocks": [
+        {
+          "type": "stat",
+          "settings": {
+            "value": "97%",
+            "label": "Dogs choose our dog food over leading brands because of its real functional ingredients and delicious flavor."
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "value": "84%",
+            "label": "Our dog food provides superior nutrition and a patented probiotic for optimal nutrient absorption."
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "value": "92%",
+            "label": "Our dog food's high protein and fat digestibility contribute to ideal stool quality."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

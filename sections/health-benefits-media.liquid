@@ -1,0 +1,264 @@
+{%- comment -%}
+  Shopify Section: Health Benefits & Media Grid (Gastrointestinal & Prebiotics)
+  File: sections/health-benefits-media.liquid
+  Description: Alternating benefits section showing digestion (video GIF left, text right) and prebiotics (text left, image right).
+{%- endcomment -%}
+
+<!-- Link Inter Tight from Google Fonts if not already linked in the theme layout -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+
+<div class="df-benefits-container" id="DfBenefits-{{ section.id }}">
+  <div class="df-benefits-inner">
+    
+    <!-- ROW 1: Gastrointestinal Health (Media Left, Text Right) -->
+    <div class="df-benefit-row">
+      <!-- Media Col: Eating Dogs GIF -->
+      <div class="df-benefit-media-col">
+        <div class="df-media-box">
+          {%- if section.settings.row_1_gif != blank -%}
+            <img class="df-card-img" src="{{ section.settings.row_1_gif | image_url: width: 800 }}" alt="{{ section.settings.row_1_heading }}" loading="lazy">
+          {%- else -%}
+            <img class="df-card-img" src="./assets/dog_eating_gif.gif" alt="Two dogs eating wholesome meals" loading="lazy">
+          {%- endif -%}
+        </div>
+      </div>
+
+      <!-- Text Col (Figma Frame 1171276346 layout) -->
+      <div class="df-benefit-text-col">
+        <h3 class="df-benefit-title">
+          {{ section.settings.row_1_heading | default: "Improve overall gastrointestinal health for better nutrient absorption" }}
+        </h3>
+        <p class="df-benefit-desc">
+          {{ section.settings.row_1_description | default: "Through rigorous scientific studies and consultations with veterinarians, we have created a breakthrough formula exclusively tailored to combat the health challenges prevalent in dogs. A staggering 91% of our customers have reported significant improvements in their dogs' health after incorporating our product into their diet." }}
+        </p>
+      </div>
+    </div>
+
+    <!-- ROW 2: Prebiotics (Text Left, Image Right) -->
+    <div class="df-benefit-row df-benefit-row-reverse">
+      <!-- Media Col: Kibble Image Close-Up -->
+      <div class="df-benefit-media-col">
+        <div class="df-media-box">
+          {%- if section.settings.row_2_img != blank -%}
+            <img class="df-card-img" src="{{ section.settings.row_2_img | image_url: width: 800 }}" alt="{{ section.settings.row_2_heading }}" loading="lazy">
+          {%- else -%}
+            <img class="df-card-img" src="./assets/dog_food.jpg" alt="Dog food kibble close-up" loading="lazy">
+          {%- endif -%}
+        </div>
+      </div>
+
+      <!-- Text Col (Figma Frame 1171276346 layout mirrored) -->
+      <div class="df-benefit-text-col">
+        <h3 class="df-benefit-title">
+          {{ section.settings.row_2_heading | default: "Prebiotics nourish the beneficial gut bacteria, supporting digestive health" }}
+        </h3>
+        <p class="df-benefit-desc">
+          {{ section.settings.row_2_description | default: "Our dog food formula contains carefully selected prebiotics that work in harmony with the gut microbiota, providing the necessary nutrients for the growth and maintenance of beneficial bacteria, ultimately supporting digestive health." }}
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<style>
+  .df-benefits-container {
+    padding: 80px 24px;
+    background-color: #ffffff;
+    font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
+  .df-benefits-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 96px; /* spacing between rows */
+  }
+
+  @media (max-width: 768px) {
+    .df-benefits-inner {
+      gap: 56px;
+    }
+  }
+
+  /* Alternating Row Grids: two 570px columns with 60px gap */
+  .df-benefit-row {
+    display: grid;
+    grid-template-columns: 570px 570px; /* Two equal 570px columns from Figma */
+    align-items: center;
+    gap: 60px;
+    justify-content: center;
+  }
+
+  .df-benefit-row-reverse {
+    display: grid;
+    grid-template-columns: 570px 570px; /* Two equal 570px columns from Figma */
+    align-items: center;
+    gap: 60px;
+    justify-content: center;
+  }
+
+  .df-benefit-row-reverse .df-benefit-media-col {
+    grid-column: 2;
+  }
+
+  .df-benefit-row-reverse .df-benefit-text-col {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  @media (max-width: 768px) {
+    .df-benefit-row,
+    .df-benefit-row-reverse {
+      grid-template-columns: 1fr;
+    }
+    .df-benefit-row-reverse .df-benefit-media-col {
+      grid-column: auto;
+    }
+    .df-benefit-row-reverse .df-benefit-text-col {
+      grid-column: auto;
+      grid-row: auto;
+    }
+  }
+
+  /* Media Container */
+  .df-media-box {
+    position: relative;
+    width: 570px; /* Fixed Figma width */
+    height: 480px; /* Fixed Figma height */
+    border-radius: 10px; /* Figma: 10px radius */
+    overflow: hidden;
+    background-color: var(--df-light);
+    border: 1px solid var(--df-border);
+    box-shadow: 0 16px 36px rgba(15, 23, 42, 0.05);
+    cursor: pointer;
+    box-sizing: border-box;
+  }
+
+  .df-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .df-media-box:hover .df-card-img {
+    transform: scale(1.03);
+  }
+
+  /* Text Column layout styled exactly like Figma Frame 1171276346 */
+  .df-benefit-text-col {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* Gap: 16px between heading and paragraph */
+    width: 570px; /* Fixed Figma Width */
+    padding-right: 32px; /* Figma Right Padding */
+    box-sizing: border-box;
+  }
+
+  /* Row 1 Text (Right Side) */
+  .df-benefit-row .df-benefit-text-col {
+    padding-left: 0;
+    padding-right: 32px;
+  }
+
+  /* Row 2 Text (Left Side) */
+  .df-benefit-row-reverse .df-benefit-text-col {
+    padding-right: 32px;
+    padding-left: 0;
+  }
+
+  @media (max-width: 768px) {
+    .df-benefit-text-col {
+      width: 100%;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+  }
+
+  .df-benefit-title {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 40px;          /* Figma Heading 3 */
+    font-weight: 600;         /* Figma Semibold */
+    color: var(--df-dark);
+    margin: 0;
+    line-height: 1.2;         /* Figma 120% */
+    letter-spacing: 0.25px;   /* Figma 0.25px */
+  }
+
+  .df-benefit-desc {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 16px;          /* Figma Paragraph */
+    font-weight: 400;         /* Figma Regular */
+    color: var(--df-gray);
+    margin: 0;
+    line-height: 1.5;         /* Figma 150% */
+    letter-spacing: 0.5px;    /* Figma 0.5px */
+  }
+
+  @media (max-width: 768px) {
+    .df-benefit-title {
+      font-size: 30px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Health Benefits Grid",
+  "tag": "section",
+  "class": "section-df-benefits",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Row 1 Configuration"
+    },
+    {
+      "type": "image_picker",
+      "id": "row_1_gif",
+      "label": "Row 1 GIF / Video Thumbnail"
+    },
+    {
+      "type": "text",
+      "id": "row_1_heading",
+      "label": "Row 1 Heading",
+      "default": "Improve overall gastrointestinal health for better nutrient absorption"
+    },
+    {
+      "type": "textarea",
+      "id": "row_1_description",
+      "label": "Row 1 Description",
+      "default": "Through rigorous scientific studies and consultations with veterinarians, we have created a breakthrough formula exclusively tailored to combat the health challenges prevalent in dogs. A staggering 91% of our customers have reported significant improvements in their dogs' health after incorporating our product into their diet."
+    },
+    {
+      "type": "header",
+      "content": "Row 2 Configuration"
+    },
+    {
+      "type": "image_picker",
+      "id": "row_2_img",
+      "label": "Row 2 Image"
+    },
+    {
+      "type": "text",
+      "id": "row_2_heading",
+      "label": "Row 2 Heading",
+      "default": "Prebiotics nourish the beneficial gut bacteria, supporting digestive health"
+    },
+    {
+      "type": "textarea",
+      "id": "row_2_description",
+      "label": "Row 2 Description",
+      "default": "Our dog food formula contains carefully selected prebiotics that work in harmony with the gut microbiota, providing the necessary nutrients for the growth and maintenance of beneficial bacteria, ultimately supporting digestive health."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Health Benefits Grid"
+    }
+  ]
+}
+{% endschema %}
