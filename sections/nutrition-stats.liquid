@@ -58,7 +58,7 @@
           {%- if section.settings.image != blank -%}
             <img class="df-stats-dog-image" src="{{ section.settings.image | image_url: width: 1200 }}" alt="Happy dog next to product bag" width="570" height="570" loading="lazy">
           {%- else -%}
-            <img class="df-stats-dog-image" src="{{ 'pic_of_dog_and_product.png' | asset_url }}" alt="Happy dog next to product bag" width="570" height="570" loading="lazy">
+            <img class="df-stats-dog-image" src="{{ 'pic_of_dog_and_product.png' | file_img_url: 'master' }}" alt="Happy dog next to product bag" width="570" height="570" loading="lazy">
           {%- endif -%}
         </div>
       </div>
