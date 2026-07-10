@@ -22,12 +22,12 @@
     <div class="pod-gallery-column">
       <div class="pod-main-image-wrapper">
         {%- if current_variant.featured_image -%}
-          <img id="PodMainImage-{{ section.id }}" class="pod-main-image" src="{{ current_variant.featured_image | image_url: width: 800 }}" alt="{{ title }}" loading="eager">
+          <img id="PodMainImage-{{ section.id }}" class="pod-main-image" src="{{ current_variant.featured_image | image_url: width: 800 }}" alt="{{ title }}" width="800" height="800" loading="eager">
         {%- elsif current_product.featured_image -%}
-          <img id="PodMainImage-{{ section.id }}" class="pod-main-image" src="{{ current_product.featured_image | image_url: width: 800 }}" alt="{{ title }}" loading="eager">
+          <img id="PodMainImage-{{ section.id }}" class="pod-main-image" src="{{ current_product.featured_image | image_url: width: 800 }}" alt="{{ title }}" width="800" height="800" loading="eager">
         {%- else -%}
           <!-- Placeholder Hoodie Image -->
-          <img id="PodMainImage-{{ section.id }}" class="pod-main-image" src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=800&q=80" alt="Personalized Hoodie" loading="eager">
+          <img id="PodMainImage-{{ section.id }}" class="pod-main-image" src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=800&q=80" alt="Personalized Hoodie" width="800" height="800" loading="eager">
         {%- endif -%}
         
         {%- if compare_at_price > price -%}
@@ -40,19 +40,19 @@
         {%- if current_product.images.size > 0 -%}
           {%- for image in current_product.images limit: 4 -%}
             <button class="pod-thumbnail-btn {% if forloop.first %}active{% endif %}" data-image-url="{{ image | image_url: width: 800 }}" aria-label="View product image {{ forloop.index }}">
-              <img src="{{ image | image_url: width: 120 }}" alt="{{ image.alt | escape }}" loading="lazy">
+              <img src="{{ image | image_url: width: 120 }}" alt="{{ image.alt | escape }}" width="120" height="120" loading="lazy">
             </button>
           {%- endfor -%}
         {%- else -%}
           <!-- Fallback Placeholders -->
           <button class="pod-thumbnail-btn active" data-image-url="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=800&q=80" aria-label="View image 1">
-            <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=120&q=80" alt="Hoodie front" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=120&q=80" alt="Hoodie front" width="120" height="120" loading="lazy">
           </button>
           <button class="pod-thumbnail-btn" data-image-url="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800&q=80" aria-label="View image 2">
-            <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=120&q=80" alt="Hoodie model" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=120&q=80" alt="Hoodie model" width="120" height="120" loading="lazy">
           </button>
           <button class="pod-thumbnail-btn" data-image-url="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=800&q=80" aria-label="View image 3">
-            <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=120&q=80" alt="Hoodie folded" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=120&q=80" alt="Hoodie folded" width="120" height="120" loading="lazy">
           </button>
         {%- endif -%}
       </div>
@@ -149,7 +149,7 @@
             </div>
             <!-- File Preview Area -->
             <div class="pod-file-preview-card" id="FilePreviewCard" style="display: none;">
-              <img id="FilePreviewImage" class="pod-file-preview-img" src="" alt="Photo preview">
+              <img id="FilePreviewImage" class="pod-file-preview-img" src="" alt="Photo preview" width="40" height="40">
               <div class="pod-file-preview-info">
                 <span id="FilePreviewName" class="pod-file-name">filename.jpg</span>
                 <span id="FilePreviewSize" class="pod-file-size">1.2 MB</span>
