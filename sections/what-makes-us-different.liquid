@@ -24,7 +24,7 @@
       <div class="df-features-col df-features-left">
         <!-- Feature 1: Real Food -->
         <div class="df-feature-item">
-          <img class="df-icon-circle" src="{{ 'food 1.svg' | asset_url | default: './assets/food 1.svg' }}" alt="Real Food Icon">
+          <img class="df-icon-circle" src="{{ 'food 1.svg' | asset_url }}" alt="Real Food Icon" width="60" height="60" loading="lazy">
           <div class="df-feature-info">
             <h3 class="df-feature-title">{{ section.settings.f1_title | default: "Real Food" }}</h3>
             <p class="df-feature-desc">{{ section.settings.f1_desc | default: "Wholesome recipes for dogs with real meat and veggies." }}</p>
@@ -33,7 +33,7 @@
 
         <!-- Feature 2: Premium Ingredient -->
         <div class="df-feature-item">
-          <img class="df-icon-circle" src="{{ 'pet-bowl 1.svg' | asset_url | default: './assets/pet-bowl 1.svg' }}" alt="Premium Ingredient Icon">
+          <img class="df-icon-circle" src="{{ 'pet-bowl 1.svg' | asset_url }}" alt="Premium Ingredient Icon" width="60" height="60" loading="lazy">
           <div class="df-feature-info">
             <h3 class="df-feature-title">{{ section.settings.f2_title | default: "Premium Ingredient" }}</h3>
             <p class="df-feature-desc">{{ section.settings.f2_desc | default: "Elevating pet care with unmatched safety and quality." }}</p>
@@ -45,9 +45,9 @@
       <div class="df-plate-col">
         <div class="df-plate-wrapper">
           <!-- Left Half: Fresh Raw Meat Image -->
-          <img class="df-plate-img df-plate-left" src="{{ section.settings.raw_img | default: './assets/meat_bowl.png' }}" alt="Fresh Raw Food Plate">
+          <img class="df-plate-img df-plate-left" src="{{ section.settings.raw_img | image_url: width: 400 | default: ('meat_bowl.png' | asset_url) }}" alt="Fresh Raw Food Plate" width="160" height="320" loading="lazy">
           <!-- Right Half: Dry Kibble Image -->
-          <img class="df-plate-img df-plate-right" src="{{ section.settings.kibble_img | default: './assets/dog_food_bowl.png' }}" alt="Dry Kibble Plate">
+          <img class="df-plate-img df-plate-right" src="{{ section.settings.kibble_img | image_url: width: 400 | default: ('dog_food_bowl.png' | asset_url) }}" alt="Dry Kibble Plate" width="160" height="320" loading="lazy">
           
           <!-- Central divider line -->
           <div class="df-plate-divider-line"></div>
@@ -65,7 +65,7 @@
       <div class="df-features-col df-features-right">
         <!-- Feature 3: Made Fresh -->
         <div class="df-feature-item">
-          <img class="df-icon-circle" src="{{ 'pet-food 1.svg' | asset_url | default: './assets/pet-food 1.svg' }}" alt="Made Fresh Icon">
+          <img class="df-icon-circle" src="{{ 'pet-food 1.svg' | asset_url }}" alt="Made Fresh Icon" width="60" height="60" loading="lazy">
           <div class="df-feature-info">
             <h3 class="df-feature-title">{{ section.settings.f3_title | default: "Made Fresh" }}</h3>
             <p class="df-feature-desc">{{ section.settings.f3_desc | default: "We prioritize maintaining the integrity of whole foods and nutrition." }}</p>
@@ -74,7 +74,7 @@
 
         <!-- Feature 4: Vet Developed -->
         <div class="df-feature-item">
-          <img class="df-icon-circle" src="{{ 'vet 1.svg' | asset_url | default: './assets/vet 1.svg' }}" alt="Vet Developed Icon">
+          <img class="df-icon-circle" src="{{ 'vet 1.svg' | asset_url }}" alt="Vet Developed Icon" width="60" height="60" loading="lazy">
           <div class="df-feature-info">
             <h3 class="df-feature-title">{{ section.settings.f4_title | default: "Vet Developed" }}</h3>
             <p class="df-feature-desc">{{ section.settings.f4_desc | default: "We raise the bar for dog nutrition, surpassing industry expectations." }}</p>
@@ -98,11 +98,11 @@
         </div>
         
         <div class="df-payment-logos">
-          <img src="./assets/paypal_icon.png" alt="Paypal">
-          <img src="./assets/visa_icon.png" alt="Visa">
-          <img src="./assets/mastercard_icon.png" alt="Mastercard">
-          <img src="./assets/apple_pay_icon.png" alt="Apple Pay">
-          <img src="./assets/gpay_icon.png" alt="GPay">
+          <img src="{{ 'paypal_icon.png' | asset_url }}" alt="Paypal" width="38" height="18" loading="lazy">
+          <img src="{{ 'visa_icon.png' | asset_url }}" alt="Visa" width="38" height="18" loading="lazy">
+          <img src="{{ 'mastercard_icon.png' | asset_url }}" alt="Mastercard" width="38" height="18" loading="lazy">
+          <img src="{{ 'apple_pay_icon.png' | asset_url }}" alt="Apple Pay" width="38" height="18" loading="lazy">
+          <img src="{{ 'gpay_icon.png' | asset_url }}" alt="GPay" width="38" height="18" loading="lazy">
         </div>
       </div>
     </div>

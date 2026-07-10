@@ -18,9 +18,9 @@
       <div class="df-benefit-media-col">
         <div class="df-media-box">
           {%- if section.settings.row_1_gif != blank -%}
-            <img class="df-card-img" src="{{ section.settings.row_1_gif | image_url: width: 800 }}" alt="{{ section.settings.row_1_heading }}" loading="lazy">
+            <img class="df-card-img" src="{{ section.settings.row_1_gif | image_url: width: 800 }}" alt="{{ section.settings.row_1_heading }}" width="570" height="480" loading="lazy">
           {%- else -%}
-            <img class="df-card-img" src="./assets/dog_eating_gif.gif" alt="Two dogs eating wholesome meals" loading="lazy">
+            <img class="df-card-img" src="{{ 'dog_eating_gif.gif' | asset_url }}" alt="Two dogs eating wholesome meals" width="570" height="480" loading="lazy">
           {%- endif -%}
         </div>
       </div>
@@ -42,9 +42,9 @@
       <div class="df-benefit-media-col">
         <div class="df-media-box">
           {%- if section.settings.row_2_img != blank -%}
-            <img class="df-card-img" src="{{ section.settings.row_2_img | image_url: width: 800 }}" alt="{{ section.settings.row_2_heading }}" loading="lazy">
+            <img class="df-card-img" src="{{ section.settings.row_2_img | image_url: width: 800 }}" alt="{{ section.settings.row_2_heading }}" width="570" height="480" loading="lazy">
           {%- else -%}
-            <img class="df-card-img" src="./assets/dog_food.jpg" alt="Dog food kibble close-up" loading="lazy">
+            <img class="df-card-img" src="{{ 'dog_food.jpg' | asset_url }}" alt="Dog food kibble close-up" width="570" height="480" loading="lazy">
           {%- endif -%}
         </div>
       </div>
