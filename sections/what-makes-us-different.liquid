@@ -45,9 +45,17 @@
       <div class="df-plate-col">
         <div class="df-plate-wrapper">
           <!-- Left Half: Fresh Raw Meat Image -->
-          <img class="df-plate-img df-plate-left" src="{{ section.settings.raw_img | image_url: width: 400 | default: ('meat_bowl.png' | asset_url) }}" alt="Fresh Raw Food Plate" width="160" height="320" loading="lazy">
+          {%- if section.settings.raw_img != blank -%}
+            <img class="df-plate-img df-plate-left" src="{{ section.settings.raw_img | image_url: width: 400 }}" alt="Fresh Raw Food Plate" width="160" height="320" loading="lazy">
+          {%- else -%}
+            <img class="df-plate-img df-plate-left" src="{{ 'meat_bowl.png' | asset_url }}" alt="Fresh Raw Food Plate" width="160" height="320" loading="lazy">
+          {%- endif -%}
           <!-- Right Half: Dry Kibble Image -->
-          <img class="df-plate-img df-plate-right" src="{{ section.settings.kibble_img | image_url: width: 400 | default: ('dog_food_bowl.png' | asset_url) }}" alt="Dry Kibble Plate" width="160" height="320" loading="lazy">
+          {%- if section.settings.kibble_img != blank -%}
+            <img class="df-plate-img df-plate-right" src="{{ section.settings.kibble_img | image_url: width: 400 }}" alt="Dry Kibble Plate" width="160" height="320" loading="lazy">
+          {%- else -%}
+            <img class="df-plate-img df-plate-right" src="{{ 'dog_food_bowl.png' | asset_url }}" alt="Dry Kibble Plate" width="160" height="320" loading="lazy">
+          {%- endif -%}
           
           <!-- Central divider line -->
           <div class="df-plate-divider-line"></div>
