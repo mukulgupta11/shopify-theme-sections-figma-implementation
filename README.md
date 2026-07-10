@@ -13,10 +13,10 @@ gemcommerce_assessment/
 ├── README.md                  ← Project documentation (this file)
 ├── preview.html               ← Standalone HTML preview (all sections combined)
 ├── assets/                    ← Static media: images, icons, GIFs
-│   ├── food 1.svg             ← Feature icon: Real Food
-│   ├── pet-bowl 1.svg         ← Feature icon: Premium Ingredient
-│   ├── pet-food 1.svg         ← Feature icon: Made Fresh
-│   ├── vet 1.svg              ← Feature icon: Vet Developed
+│   ├── food_1.svg             ← Feature icon: Real Food
+│   ├── pet-bowl_1.svg         ← Feature icon: Premium Ingredient
+│   ├── pet-food_1.svg         ← Feature icon: Made Fresh
+│   ├── vet_1.svg              ← Feature icon: Vet Developed
 │   ├── meat_bowl.png          ← Split-plate left half (raw food)
 │   ├── dog_food_bowl.png      ← Split-plate right half (kibble)
 │   ├── pic_of_dog_and_product.png  ← Stats section hero image
@@ -30,16 +30,14 @@ gemcommerce_assessment/
 └── sections/                  ← Shopify Liquid section files
     ├── what-makes-us-different.liquid   ← Split-plate features grid
     ├── nutrition-stats.liquid           ← Key stats + dog image
-    ├── health-benefits-media.liquid     ← Alternating benefits rows
-    ├── dog-food-cta.liquid              ← CTA button + trust badges
-    └── personalized-product.liquid      ← POD product customizer
+    └── health-benefits-media.liquid     ← Alternating benefits rows
 ```
 
 ---
 
 ## 🚀 How to Preview Locally
 
-1. Open a terminal in the project root directory
+1. Open a terminal in the project root directory.
 2. Start a local server:
    ```bash
    python -m http.server 8000
@@ -60,28 +58,20 @@ Each `.liquid` file in the `sections/` folder is an independent, self-contained 
 - **`{% schema %}`** block for Theme Editor configurability
 - **Fallback defaults** for all content (text, images)
 
-### 1. What Makes Us Different (`what-makes-us-different.liquid`)
-- **Layout:** 3-column grid (features | split-plate circle | features)
+### 1. Brand Features (`what-makes-us-different.liquid`)
+- **Layout:** 3-column grid (features | split-plate circle | features) with 40px gaps
 - **Components:** 4 icon+text feature cards, CSS split-plate with clip-path, CTA button, trust badges with payment icons
-- **Figma Specs:** 60×60px icons, 286px text containers, 462px CTA button width
+- **Figma Specs:** 60×60px icons, 286px text containers, 462px CTA button width, 12px/40px button padding
 
 ### 2. Nutrition Stats (`nutrition-stats.liquid`)
 - **Layout:** 2-column grid (570px text | 570px image) with 60px gap
 - **Components:** Heading group, "Key Points:" label, 3 stat rows with percentage badges, CTA button, square hero image
 - **Figma Specs:** 570×570px image (10px radius), 6px button radius, 12px/40px button padding, #EE6F4B button color
 
-### 3. Health Benefits Media (`health-benefits-media.liquid`)
+### 3. Health Benefits Grid (`health-benefits-media.liquid`)
 - **Layout:** 2 alternating rows (media+text), each 570px × 570px grid with 60px gap
 - **Components:** GIF media box, static image box, heading+description text blocks
 - **Figma Specs:** 570×480px media (10px radius), 32px text padding, 16px vertical gap
-
-### 4. Dog Food CTA (`dog-food-cta.liquid`)
-- **Layout:** Centered CTA bar with guarantee badge and payment logos
-- **Components:** Pill-shaped button, shield icon, 5 payment method logos
-
-### 5. Personalized Product (`personalized-product.liquid`)
-- **Layout:** Full product page with image gallery, variant selectors, and file upload
-- **Components:** POD (Print-on-Demand) customizer with real-time preview
 
 ---
 
@@ -111,21 +101,13 @@ All sections follow a unified design system derived from the Figma file:
 - **Self-contained sections** — Each Liquid file includes its own styles; no global stylesheet dependency
 - **Shopify Theme Editor ready** — All content is configurable via `{% schema %}` settings without code changes
 - **Semantic HTML5** — Proper heading hierarchy, alt attributes, and accessibility considerations
-- **Performance optimized** — Lazy loading on below-fold images, Google Fonts with `preconnect`
+- **File size fallback optimization** — Heavy assets exceeding the theme's 10MB upload limit (like the 11.9MB GIF and high-res images) are loaded dynamically from Shopify Content Files via the `file_img_url` and `file_url` filters. Small icons are served locally via the `asset_url` filter.
 
 ---
 
 ## 📐 Figma-to-Code Methodology
 
-1. **Inspected** every frame, text layer, and component in Figma's Properties panel
-2. **Extracted** exact values: widths, heights, paddings, gaps, border-radii, font sizes, weights, line heights, letter spacing, and colors
-3. **Implemented** using CSS Grid for layout and Flexbox for component internals
-4. **Verified** each section side-by-side against the Figma design at 1:1 scale
-
----
-
-## 📝 Notes
-
-- The `preview.html` file is for **local demonstration only** and is not part of the Shopify theme
-- In a production Shopify theme, the `assets/` folder contents would be uploaded to Shopify's CDN and referenced via `{{ 'filename' | asset_url }}`
-- The Liquid files use `| default:` filters to provide fallback content when Shopify settings are not configured
+1. **Inspected** every frame, text layer, and component in Figma's Properties panel.
+2. **Extracted** exact values: widths, heights, paddings, gaps, border-radii, font sizes, weights, line heights, letter spacing, and colors.
+3. **Implemented** using CSS Grid for layout and Flexbox for component internals.
+4. **Verified** each section side-by-side against the Figma design at 1:1 scale.
